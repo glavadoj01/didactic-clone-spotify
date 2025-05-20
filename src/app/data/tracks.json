@@ -14,7 +14,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track.mp3"
+            "url": "http://localhost:3000/track-1.mp3"
         },
         {
             "_id": 2,
@@ -30,7 +30,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-1.mp3"
+            "url": "http://localhost:3000/track-2.mp3"
         },
         {
             "_id": 3,
@@ -46,7 +46,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-2.mp3"
+            "url": "http://localhost:3000/track-3.mp3"
         },
         {
             "_id": 4,
@@ -78,7 +78,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-3.mp3"
+            "url": "http://localhost:3000/track-5.mp3"
         },
         {
             "_id": 6,
@@ -94,7 +94,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-5.mp3"
+            "url": "http://localhost:3000/track-6.mp3"
         },
         {
             "_id": 7,
@@ -110,7 +110,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-6.mp3"
+            "url": "http://localhost:3000/track-7.mp3"
         },
         {
             "_id": 8,
@@ -126,13 +126,13 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "http://localhost:3000/track-7.mp3"
+            "url": "http://localhost:3000/track-8.mp3"
         },
         {
             "_id": 9,
             "name": "Highway to Hell",
             "album": "Back in Black",
-            "cover": "https://example.com/cover1.jpg",
+            "cover": "https://tudosobreprodutos.com.br/min/cd-acdc-highway-to-hell.jpg",
             "artist": {
                 "name": "AC/DC",
                 "nickname": "ACDC",
@@ -142,7 +142,7 @@
                 "start": 0,
                 "end": 333
             },
-            "url": "https://localhost:4200/track1.mp3"
+            "url": "https://localhost:4200/track9.mp3"
         }
     ]
 }
