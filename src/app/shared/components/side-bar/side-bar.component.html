@@ -19,9 +19,9 @@
     </ul>
     <div class="side-bar__separator line-separator"></div>
     <ul class="side-bar__list list-three">
-        <li>
+        <li *ngFor="let item of customOptions">
             <div class="list-wrapper-item">
-                <span class="side-bar__list list-label">Link3</span>
+                <span class="side-bar__list list-label">{{item.name}}</span>
             </div>
         </li>
     </ul>

@@ -47,5 +47,23 @@ export class SideBarComponent implements OnInit {
         icon: 'uil-heart-medical',
       }
     ]
+    this.customOptions = [
+      {
+        name: 'Mi lista º1',
+        router: ['/']
+      },
+      {
+        name: 'Mi lista º2',
+        router: ['/']
+      },
+      {
+        name: 'Mi lista º3',
+        router: ['/']
+      },
+      {
+        name: 'Mi lista º4',
+        router: ['/']
+      }
+    ]
   }
 }

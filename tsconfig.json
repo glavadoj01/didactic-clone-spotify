@@ -4,14 +4,15 @@
   "compileOnSave": false,
   "compilerOptions": {
     "resolveJsonModule": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@app/*": ["./app/*"],
-      "@assets/*": ["./assets/*"],
-      "@environments/*": ["./environments/*"],
-      "@core/*": ["./app/core/*"],
-      "@modules/*": ["./app/modules/*"],
-      "@shared/*": ["./app/shared/*"],
+      "@app/*": ["./src/app/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@environments/*": ["./src/environments/*"],
+      
+      "@core/*": ["./src/app/core/*"],
+      "@modules/*": ["./src/app/modules/*"],
+      "@shared/*": ["./src/app/shared/*"],
     },
 
 
