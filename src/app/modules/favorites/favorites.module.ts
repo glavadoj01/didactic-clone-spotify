@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { FavoritesRoutingModule } from './favorites-routing.module';
 
-
 @NgModule({
   declarations: [],
   imports: [

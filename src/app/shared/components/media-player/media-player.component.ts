@@ -10,7 +10,7 @@ import { TrackModel } from '@app/core/models/track.model';
 })
 export class MediaPlayerComponent implements OnInit {
   mockCover:TrackModel = {
-    _id: 1,
+    idd: 1,
     name: 'Highway to Hell',
     album: 'Highway to Hell',
     cover: 'https://tudosobreprodutos.com.br/min/cd-acdc-highway-to-hell.jpg',

@@ -1,0 +1,35 @@
+<div class="play-list-body">
+    <ul class="play-list-table-header">
+        <li (click)="changeSort('name')">Nombre ❤</li>
+        <li (click)="changeSort('album')">Álbum 🆗</li>
+        <li (click)="changeSort('artist.name')">Artista 🍌😁</li>
+        <li (click)="changeSort('idd')">Id original<i class="uil uil-plane"></i></li>
+    </ul> <!-- tracks:dataSet Of Properties | trackF:var to ngFor  | trackFOR: var to template -->
+    <ul class="play-list-rows" *ngFor="let trackF of tracks | orderList:optionSort.property:optionSort.order">
+        <li class="track-name">
+            <ng-container *ngTemplateOutlet="coverSection;context:{trackFor:trackF}"></ng-container>
+        </li>
+        <li class="track-name-opacity">
+            {{trackF.album}}
+        </li>
+        <li class="track-name-opacity">
+            {{trackF.artist?.name ?? 'Artista Desconocido'}}
+        </li>
+        <li class="track-name-opacity">
+            {{trackF.idd}}
+        </li>
+    </ul>
+</div>
+
+<!--template del coverSection-->
+<ng-template #coverSection let-trackAux="trackFor">
+
+    <div class="cover-section">
+        <img appImgBroken class="cover-track" [src]="trackAux.cover" [alt]="trackAux.name">
+        <div class="cover-info">
+            <div class="name-track">{{trackAux.name}}</div>
+            <div class="name-track-details">{{trackAux.artist?.name}}</div>
+        </div>
+    </div>
+
+</ng-template>

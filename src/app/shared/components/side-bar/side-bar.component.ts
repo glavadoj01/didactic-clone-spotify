@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -24,17 +25,17 @@ export class SideBarComponent implements OnInit {
       {
         name: 'Home',
         icon: 'uil uil-estate',
-        router: ['/']
+        router: ['/', 'tracks'] // localhost:4200/track
       },
       {
         name: 'Buscar',
         icon: 'uil uil-search',
-        router: ['/','history']
+        router: ['/','history'] // localhost:4200/history
       },
       {
         name: 'Tu Biblioteca',
         icon: 'uil uil-chart',
-        router: ['/','favorites']
+        router: ['/','favorites'] // localhost:4200/favorites
       }
     ]
     this.mainMenu.accessLink = [

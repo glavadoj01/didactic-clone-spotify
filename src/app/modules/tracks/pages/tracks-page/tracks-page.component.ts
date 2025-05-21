@@ -10,9 +10,7 @@ import data from "@app/data/tracks.json";
   styleUrl: './tracks-page.component.css'
 })
 export class TracksPageComponent implements OnInit {
-  mockTracksList:Array<TrackModel> = [
-
-  ]  
+  mockTracksList:Array<TrackModel> = []  
 
   constructor() {}
 
