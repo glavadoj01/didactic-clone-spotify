@@ -12,6 +12,7 @@ export class LoginPageComponent implements OnInit {
 
   formLogin: FormGroup = new FormGroup({});
   
+  
   constructor() {}
 
   ngOnInit(): void {
@@ -28,6 +29,14 @@ export class LoginPageComponent implements OnInit {
         ])
       }
     );
+  }
+
+  sendLogin() {
+    if (this.formLogin.valid) {
+      console.log('🙊 Body: ', this.formLogin.value);
+    } else {
+      console.log('🙊 Body Form is invalid');
+    }
   }
 
 }
