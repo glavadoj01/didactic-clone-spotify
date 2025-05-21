@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { TrackService } from '@app/modules/tracks/services/track.service';
+
+interface MenuOption {
+  name: string;
+  icon?: string;
+  router?: any[];
+}
+
 
 @Component({
   selector: 'app-side-bar',
@@ -11,14 +19,14 @@ import { RouterLink } from '@angular/router';
 export class SideBarComponent implements OnInit {
 
   mainMenu: {
-    defaultOptions: Array<any>,
-    accessLink: Array<any>,
-  } = { defaultOptions: [], accessLink: [] }
+    defaultOptions: MenuOption[],
+    accessLink: MenuOption[],
+  } = { defaultOptions: [], accessLink: [] };
   
   
-  customOptions: Array<any> = []
+  customOptions: MenuOption[] = [];
 
-  constructor() { }
+  constructor(private router: Router, private trackService: TrackService) { }
   
   ngOnInit(): void {
     this.mainMenu.defaultOptions = [
@@ -30,12 +38,12 @@ export class SideBarComponent implements OnInit {
       {
         name: 'Buscar',
         icon: 'uil uil-search',
-        router: ['/','history'] // localhost:4200/history
+        router: ['/', 'history'] // localhost:4200/history
       },
       {
         name: 'Tu Biblioteca',
         icon: 'uil uil-chart',
-        router: ['/','favorites'] // localhost:4200/favorites
+        router: ['/', 'favorites'] // localhost:4200/favorites
       }
     ]
     this.mainMenu.accessLink = [
@@ -49,22 +57,33 @@ export class SideBarComponent implements OnInit {
       }
     ]
     this.customOptions = [
-      {
-        name: 'Mi lista º1',
-        router: ['/']
-      },
-      {
-        name: 'Mi lista º2',
-        router: ['/']
-      },
-      {
-        name: 'Mi lista º3',
-        router: ['/']
-      },
-      {
-        name: 'Mi lista º4',
-        router: ['/']
+      { name: 'Mi lista º1', router: ['/'] },
+      { name: 'Mi lista º2', router: ['/'] },
+      { name: 'Mi lista º3', router: ['/'] },
+      { name: 'Mi lista º4', router: ['/'] }
+    ];
+
+    this.trackService.dataTracksRandom$
+      .subscribe((data : any ) => {
+        this.customOptions.push(
+          {
+            name: data[0].name,
+            router: [],
+            icon: 'uil uil-death'
+          }
+        )
       }
-    ]
+    )
+  }
+
+  goTo($event: any): void {
+    this.router.navigate(['/', 'favorites'], {
+      queryParams: {
+        key1: 'value1',
+        key2: 'value2',
+        key3: 'value3'
+      }
+    })
+    console.log($event)
   }
 }

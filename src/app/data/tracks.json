@@ -107,18 +107,6 @@
                 "nationality": "Australian"
             },
             "url": "https://localhost:3000/track9.wma"
-        },
-        {
-            "idd": 10,
-            "name": "The Passenger",
-            "album": "Lust for Life",
-            "cover": "https://enlaceroto.com/img.jpg",
-            "artist": {
-                "name": "Iggy Pop",
-                "nickname": "Iggy Pop",
-                "nationality": "US"
-            },
-            "url": "http://localhost:3000/track-10.mp3"   
         }
     ]
 }
