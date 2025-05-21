@@ -1,6 +1,8 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';  
+import { MultimediaService } from '@app/shared/services/multimedia.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-media-player',
@@ -8,15 +10,30 @@ import { TrackModel } from '@app/core/models/track.model';
   templateUrl: './media-player.component.html',
   styleUrl: './media-player.component.css'
 })
-export class MediaPlayerComponent implements OnInit {
+export class MediaPlayerComponent implements OnInit, OnDestroy {
   mockCover:TrackModel = {
-    idd: 1,
-    name: 'Highway to Hell',
-    album: 'Highway to Hell',
-    cover: 'https://tudosobreprodutos.com.br/min/cd-acdc-highway-to-hell.jpg',
-    url: 'https://www.youtube.com/watch?v=l482T0yNkeo'
+    idd: 0,
+    name: '',
+    album: '',
+    cover: '',
+    url: ''
   }
-  constructor() {}
 
-  ngOnInit(): void {}
+  listaObservables$: Array<Subscription> = [];
+
+  constructor(private multimediaService: MultimediaService) { 
+  }
+
+  ngOnInit() {
+    const observer1$: Subscription = this.multimediaService.callback.subscribe(
+      (track: TrackModel) => { this.mockCover = track}
+    );
+    this.listaObservables$ = [observer1$] 
+  }
+
+  ngOnDestroy() {
+    this.listaObservables$
+        .forEach((obs: Subscription) => {obs.unsubscribe()}
+    );
+  }
 }

@@ -2,6 +2,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';
 import { ImgBrokenDirective } from '@app/shared/directives/img-broken.directive';
+import { MultimediaService } from '@app/shared/services/multimedia.service';
 
 @Component({
   selector: 'app-card-player',
@@ -13,7 +14,13 @@ export class CardPlayerComponent implements OnInit {
   @Input() mode: 'small' | 'big' = 'big';
   @Input() track!: TrackModel;
   
-  constructor() {}
+  constructor(private multimediaService: MultimediaService) {
+
+  }
+
   ngOnInit(): void {}
 
+  sendTrack(trackSend: TrackModel) {
+    this.multimediaService.callback.emit(trackSend);
+  }
 }

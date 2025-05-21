@@ -1,6 +1,7 @@
 import { CommonModule, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   formLogin: FormGroup = new FormGroup({});
   
   
-  constructor() {}
+  constructor(private asAuthService: AuthService) {}
 
   ngOnInit(): void {
     this.formLogin = new FormGroup(
@@ -33,7 +34,9 @@ export class LoginPageComponent implements OnInit {
 
   sendLogin() {
     if (this.formLogin.valid) {
-      console.log('🙊 Body: ', this.formLogin.value);
+      const { email, password } = this.formLogin.value;
+      console.log('🙊 Petición de Validación enviada')
+      this.asAuthService.sendsCredentials(email, password);        
     } else {
       console.log('🙊 Body Form is invalid');
     }
