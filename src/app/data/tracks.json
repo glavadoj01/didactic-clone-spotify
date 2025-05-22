@@ -10,7 +10,7 @@
                 "nickname": "Ehta Gente",
                 "nationality": "España"
             },
-            "url": "http://localhost:3000/track-1.mp3"
+            "url": "http://localhost:3001/track-1.mp3"
         },
         {
             "idd": 2,
@@ -22,7 +22,7 @@
                 "nickname": "Ehta Gente",
                 "nationality": "España"
             },
-            "url": "http://localhost:3000/track-2.mp3"
+            "url": "http://localhost:3001/track-2.mp3"
         },
         {
             "idd": 3,
@@ -34,7 +34,7 @@
                 "nickname": "Slayer",
                 "nationality": "US"
             },
-            "url": "http://localhost:3000/track-3.mp3"
+            "url": "http://localhost:3001/track-3.mp3"
         },
         {
             "idd": 4,
@@ -46,7 +46,7 @@
                 "nickname": "Velvet",
                 "nationality": "US"
             },
-            "url": "http://localhost:3000/track-4.mp3"
+            "url": "http://localhost:3001/track-4.mp3"
         },
         {
             "idd": 5,
@@ -58,7 +58,7 @@
                 "nickname": "Belgrado",
                 "nationality": "España"
             },
-            "url": "http://localhost:3000/track-5.mp3"
+            "url": "http://localhost:3001/track-5.mp3"
         },
         {
             "idd": 6,
@@ -70,7 +70,7 @@
                 "nickname": "ACDC",
                 "nationality": "Australian"
             },
-            "url": "http://localhost:3000/track-6.mp3"
+            "url": "http://localhost:3001/track-6.mp3"
         },
         {
             "idd": 7,
@@ -82,7 +82,7 @@
                 "nickname": "Bahuaus",
                 "nationality": "UK"
             },
-            "url": "http://localhost:3000/track-7.mp3"
+            "url": "http://localhost:3001/track-7.mp3"
         },
         {
             "idd": 8,
@@ -94,7 +94,7 @@
                 "nickname": "Baron Rojo",
                 "nationality": "España"
             },
-            "url": "http://localhost:3000/track-8.mp3"
+            "url": "http://localhost:3001/track-8.mp3"
         },
         {
             "idd": 9,
@@ -106,7 +106,7 @@
                 "nickname": "ACDC",
                 "nationality": "Australian"
             },
-            "url": "https://localhost:3000/track9.wma"
+            "url": "https://localhost:3001/track-9.mp3"
         }
     ]
 }

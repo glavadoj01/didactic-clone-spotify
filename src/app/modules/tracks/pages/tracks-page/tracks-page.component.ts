@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SectionGenericComponent } from "@shared/components/section-generic/section-generic.component";
-import { TrackModel } from '@app/core/models/track.model';
-import { TrackService } from '../../services/track.service';
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { TrackService } from '@modules/tracks/services/track.service'
+import { TrackModel } from '@app/core/models/track.model'
+import { SectionGenericComponent } from "@shared/components/section-generic/section-generic.component"
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,30 +12,47 @@ import { Subscription } from 'rxjs';
 })
 export class TracksPageComponent implements OnInit, OnDestroy {
   
-  tracksTrending: Array<TrackModel> = [];
-  tracksRandom: Array<TrackModel> = [];
+  tracksTrending: Array<TrackModel> = []
+  tracksRandom: Array<TrackModel> = []
 
-  listaObservables: Array<Subscription> = [];
+  private subscriptions: Subscription[] = []
 
   constructor(private trackService: TrackService) {}
 
   ngOnInit(): void {
-    const observer1$: Subscription = this.trackService.dataTracksTrending$
-      .subscribe(data => {
-        this.tracksTrending = data
-        this.tracksRandom = [...data]
-      })
-    
-    const observer2$: Subscription = this.trackService.dataTracksRandom$
-      .subscribe(data => {
-        this.tracksRandom.push(...data)
-      })
-
-
-    this.listaObservables.push(observer1$, observer2$)
+    this.loadDataAll()
+    this.loadDataRandom()
   }
 
+  /**
+   * Carga el TOP 5 tracks de la API
+   * @returns {void}
+   */
+  loadDataAll(): void {
+    const sub1$ = this.trackService.getAllTracks().subscribe({
+      next: (respuesta: TrackModel[]) => this.tracksTrending = respuesta.slice(0, 5),
+      error: err => console.error('🔴👉 Error al cargar los tracks', err)
+    })
+    this.subscriptions.push(sub1$)
+  }
+
+  /**
+   * Carga tracks de la API en modo random
+   * @returns {void}
+   */
+  loadDataRandom(): void {
+    const sub2$ = this.trackService.getRandomTracks().subscribe({
+      next: (respuesta: TrackModel[]) => this.tracksRandom = respuesta,
+      error: err => console.error('🔴👉 Error al cargar los tracks random', err)
+    })
+    this.subscriptions.push(sub2$)
+  }
+
+  /**
+   * Destruye los observables de homePage
+   * @returns {void}
+   */
   ngOnDestroy(): void {
-    this.listaObservables.forEach(u => u.unsubscribe())
+    this.subscriptions.forEach(sub => sub.unsubscribe())
   }
 }

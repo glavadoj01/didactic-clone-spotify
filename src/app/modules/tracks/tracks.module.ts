@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { TracksRoutingModule } from './tracks-routing.module';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -11,4 +10,5 @@ import { TracksRoutingModule } from './tracks-routing.module';
     TracksRoutingModule
   ]
 })
+
 export class TracksModule { }
