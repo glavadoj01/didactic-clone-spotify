@@ -1,7 +1,6 @@
 import { NgFor, NgTemplateOutlet } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';
-import data from "@app/data/tracks.json";
 import { OrderListPipe } from '@app/shared/pipe/order-list.pipe';
 
 @Component({
@@ -11,13 +10,13 @@ import { OrderListPipe } from '@app/shared/pipe/order-list.pipe';
   styleUrl: './play-list-body.component.css'
 })
 export class PlayListBodyComponent implements OnInit {
-  tracks: TrackModel[] = [];
+  @Input() tracks: TrackModel[] = [];
   optionSort: {property: string | null, order:string} = {property: 'idd', order: 'asc'};
 
   constructor() {}
 
   ngOnInit(): void {
-    this.tracks = data.data;
+    
   }
 
   changeSort(property: string): void {

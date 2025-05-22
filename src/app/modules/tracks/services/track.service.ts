@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';
 import { environment } from '@environments/environment';
@@ -20,9 +20,8 @@ export class TrackService {
    * @returns Observable<any>
    */
   getAllTracks(): Observable<TrackModel[]> {
-    return this.httpVar.get<{ data: TrackModel[] }>(`${this.URL}/tracks`).pipe(
-      map(response => response.data)
-    )
+    return this.httpVar.get<{ data: TrackModel[] }>(`${this.URL}/tracks`)
+      .pipe(map(response => response.data))
   }
 
   getRandomTracks(): Observable<TrackModel[]> {

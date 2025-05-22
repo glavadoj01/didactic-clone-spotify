@@ -6,12 +6,13 @@ import { TrackModel } from '@app/core/models/track.model';
 })
 export class OrderListPipe implements PipeTransform {
 
-  transform(value: Array<any>, arg: string | null = null, sort: string = 'asc'): TrackModel[] {
-    try {
-      
-      if (!arg) {
-        return value;
-      
+  transform(value: Array<any> | null | undefined , arg: string | null = null, sort: string = 'asc'): TrackModel[] {
+  try {
+    if (!value) {
+      return [];
+    }
+    if (!arg) {
+      return value;
       } else {
         const tempList = value.sort((a, b) => {
           const propA = arg.split('.').reduce((obj, key) => obj?.[key], a);
@@ -30,7 +31,8 @@ export class OrderListPipe implements PipeTransform {
 
     } catch (error) {
       console.error('Error in orderList pipe:', error);
-      return value;
+      return value ?? [];
+    // Return an empty array if value is null or undefined
     }
   }
 }
