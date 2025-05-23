@@ -1,5 +1,5 @@
 import { CommonModule, NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MultimediaService } from '@app/shared/services/multimedia.service';
 
 
@@ -11,6 +11,17 @@ import { MultimediaService } from '@app/shared/services/multimedia.service';
 })
 export class MediaPlayerComponent {
 
+  @ViewChild('progressBar', {static: false}) progressBar!: ElementRef<HTMLSpanElement>
+
   constructor(public multimediaService: MultimediaService) {}
 
+  handlePosition(entrada: MouseEvent) {
+    const bar: HTMLElement = this.progressBar.nativeElement
+    const rect = bar.getBoundingClientRect()
+    const clickX = entrada.clientX - rect.left // posición relativa al inicio de la barra
+    const width = rect.width
+    const porcentaje = clickX / width // valor entre 0 y 1
+    
+    this.multimediaService.seekAudio(porcentaje)
+  }
 }
