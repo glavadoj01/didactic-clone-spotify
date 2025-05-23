@@ -14,6 +14,15 @@ describe('CardPlayerComponent', () => {
 
     fixture = TestBed.createComponent(CardPlayerComponent);
     component = fixture.componentInstance;
+
+    component.track = {
+      idd: '1',
+      name: 'Test Track',
+      album: 'Test Album',
+      cover: 'https://example.com/image.jpg',
+      url: 'https://example.com/preview.mp3'
+    }
+    
     fixture.detectChanges();
   });
 
