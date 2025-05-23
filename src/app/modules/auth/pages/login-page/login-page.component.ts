@@ -47,17 +47,13 @@ export class LoginPageComponent implements OnInit {
         .subscribe({
           next: (responseOk) => {
             this.cookieSrv.set('tokenVar', responseOk.tokenSession, 1, '/')
-            console.log('🙊 Petición de Validación enviada', responseOk)
             this.routerSrv.navigate(['/', 'tracks'])
           },
           error: (error) => {
             this.errorSession = true
-            console.log('🙊 Error en la petición de Validación', error)
           }
         })
       
-    } else {
-      console.log('🙊 Body Form is invalid');
     }
   }
 
