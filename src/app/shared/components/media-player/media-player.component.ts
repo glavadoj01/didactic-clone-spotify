@@ -1,5 +1,5 @@
 import { CommonModule, NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { MultimediaService } from '@app/shared/services/multimedia.service';
 
 
@@ -13,7 +13,9 @@ export class MediaPlayerComponent {
 
   @ViewChild('progressBar', {static: false}) progressBar!: ElementRef<HTMLSpanElement>
 
-  constructor(public multimediaService: MultimediaService) {}
+  public multimediaService = inject(MultimediaService)
+
+  constructor() {}
 
   handlePosition(entrada: MouseEvent) {
     const bar: HTMLElement = this.progressBar.nativeElement

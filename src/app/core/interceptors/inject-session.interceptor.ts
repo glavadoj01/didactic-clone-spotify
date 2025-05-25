@@ -1,12 +1,16 @@
 import { inject } from '@angular/core';
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
-export const injectSessionInterceptor: HttpInterceptorFn = (req, next) => {
-  try {
+export const injectSessionInterceptor: HttpInterceptorFn = (
+  req: HttpRequest<any>,
+  next: HttpHandlerFn
+) => {
     const cookieService = inject(CookieService);
+  try {
     const token = cookieService.get('tokenVar');
-    const newRequest = req.clone(
+    let newRequest = req;
+    newRequest = req.clone(
       {
         setHeaders: {
           authorization: `Bearer ${token}`

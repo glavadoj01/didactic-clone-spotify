@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';
-import { TrackService } from '@app/modules/tracks/services/track.service';
+import { getAllTracks$ } from '@app/modules/tracks/services/track.service';
 import { PlayListBodyComponent } from '@app/shared/components/play-list-body/play-list-body.component';
 import { PlayListHeaderComponent } from '@app/shared/components/play-list-header/play-list-header.component';
 
@@ -10,17 +10,14 @@ import { PlayListHeaderComponent } from '@app/shared/components/play-list-header
   templateUrl: './favorites-pages.component.html',
   styleUrl: './favorites-pages.component.css'
 })
-export class FavoritesPagesComponent implements OnInit {
+export class FavoritesPagesComponent {
 
   tracks: TrackModel[] = []
 
-  constructor(private trackSrv: TrackService) {}
-
-  ngOnInit(): void {
-    this.trackSrv.getAllTracks().subscribe({
-      next: (tracks) => this.tracks = tracks,
-      error: (err) => console.error('Error loading tracks', err)
-    });
+  constructor() {
+    getAllTracks$().subscribe({
+      next: (respuesta: TrackModel[]) => this.tracks = respuesta,
+      error: err => console.error('🔴👉 Error al cargar los tracks', err)
+    })
   }
-
 }

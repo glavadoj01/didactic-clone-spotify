@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { TrackModel } from '@app/core/models/track.model';
 import { ImgBrokenDirective } from '@app/shared/directives/img-broken.directive';
 import { MultimediaService } from '@app/shared/services/multimedia.service';
@@ -11,12 +11,12 @@ import { MultimediaService } from '@app/shared/services/multimedia.service';
   styleUrl: './card-player.component.css'
 })
 export class CardPlayerComponent implements OnInit {
-  @Input() mode: 'small' | 'big' = 'big';
-  @Input() track!: TrackModel;
+  @Input({required:true}) mode: 'small' | 'big' = 'big';
+  @Input({required:true}) track!: TrackModel;
   
-  constructor(private multimediaService: MultimediaService) {
+  private multimediaService = inject(MultimediaService)
 
-  }
+  constructor() { }
 
   ngOnInit(): void {}
 

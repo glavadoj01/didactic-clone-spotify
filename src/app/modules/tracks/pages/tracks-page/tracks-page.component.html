@@ -1,4 +1,7 @@
 <div class="tracks-page">
+    <div>
+       User: {{ currentUser | json }}
+    </div>
     <!--section top (small)-->
     <app-section-generic [dataTracks]="tracksTrending" [mode]="'small'" [title]="'¡La mejor música del mundo!'"/>
     <!--section medium (big)-->
